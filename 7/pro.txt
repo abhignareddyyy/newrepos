@@ -1,0 +1,286 @@
+2) 📦 Initialize Node Project
+npm init -y
+
+This creates:
+
+package.json
+3) 📥 Install Required Packages
+npm install express mongoose
+
+(Optional for auto restart)
+
+npm install nodemon --save-dev
+4) 📂 Create Folder Structure
+
+Inside your project create:
+
+movie-crud
+│
+├── app.js
+└── models
+    └── Movie.js
+Commands (Windows CMD)
+mkdir models
+type nul > app.js
+type nul > models\Movie.js
+Commands (PowerShell)
+mkdir models
+ni app.js
+ni models/Movie.js
+Commands (Mac/Linux)
+mkdir models
+touch app.js
+touch models/Movie.js
+5) 🛢️ Start MongoDB
+
+You must have MongoDB installed.
+
+Option A: If MongoDB is already running
+
+No need to do anything.
+
+Option B: Start MongoDB manually
+Windows
+
+Open Services and start MongoDB,
+or use:
+
+mongod
+
+(works if MongoDB bin is in PATH)
+
+Check MongoDB shell
+mongosh
+
+If it opens, MongoDB is working.
+
+6) 🗄️ Create Database
+
+Inside mongosh:
+
+use movieDB
+
+Check database:
+
+show dbs
+
+(If empty, it may appear only after inserting data)
+
+Exit shell:
+
+exit
+7) 🧠 Create Mongoose Model
+
+You need a Movie collection with fields:
+
+title
+director
+releaseYear
+genre
+
+This is done inside:
+
+models/Movie.js
+
+And API logic is written in:
+
+app.js
+
+👉 Since you asked only process, write your model and CRUD routes there.
+
+8) ▶️ Run the Express Server
+Normal run
+node app.js
+If using nodemon
+npx nodemon app.js
+
+If successful, terminal should show something like:
+
+Server running on port 3000
+MongoDB connected
+9) 🧪 Test in Postman
+
+Base URL:
+
+http://localhost:3000
+🔹 1. POST /movies → Add New Movie
+Postman Setup
+Method: POST
+URL:
+http://localhost:3000/movies
+Go to Body → raw → JSON
+JSON Data
+{
+  "title": "Inception",
+  "director": "Christopher Nolan",
+  "releaseYear": 2010,
+  "genre": "Sci-Fi"
+}
+Click:
+Send
+Expected Result
+
+Movie inserted into MongoDB.
+
+🔹 2. GET /movies → Retrieve All Movies
+Postman Setup
+Method: GET
+URL:
+http://localhost:3000/movies
+Click:
+Send
+Expected Result
+
+You will get all movies in JSON array format.
+
+🔹 3. GET /movies/:id → Retrieve Movie by ID
+
+First copy one _id from the GET all response.
+
+Example _id:
+
+67f1ab23c45d678901234567
+Postman Setup
+Method: GET
+URL:
+http://localhost:3000/movies/67f1ab23c45d678901234567
+Click:
+Send
+Expected Result
+
+Only that specific movie is returned.
+
+🔹 4. PUT /movies/:id → Update Movie by ID
+
+Use same _id.
+
+Postman Setup
+Method: PUT
+URL:
+http://localhost:3000/movies/67f1ab23c45d678901234567
+Go to Body → raw → JSON
+Example Update Data
+{
+  "title": "Inception Updated",
+  "director": "Christopher Nolan",
+  "releaseYear": 2011,
+  "genre": "Thriller"
+}
+Click:
+Send
+Expected Result
+
+Movie details updated in MongoDB.
+
+🔹 5. DELETE /movies/:id → Delete Movie by ID
+
+Use same _id.
+
+Postman Setup
+Method: DELETE
+URL:
+http://localhost:3000/movies/67f1ab23c45d678901234567
+Click:
+Send
+Expected Result
+
+Movie deleted successfully.
+
+10) 🛢️ Verify Data in MongoDB Shell
+
+Open:
+
+mongosh
+
+Use DB:
+
+use movieDB
+
+Show collections:
+
+show collections
+
+Expected:
+
+movies
+
+See all data:
+
+db.movies.find()
+
+Formatted output:
+
+db.movies.find().pretty()
+
+Find one movie:
+
+db.movies.findOne({ title: "Inception" })
+
+Delete all movies if needed:
+
+db.movies.deleteMany({})
+
+Exit:
+
+exit
+11) ✅ Full Commands Summary (Important for Exam)
+Project setup
+mkdir movie-crud
+cd movie-crud
+npm init -y
+npm install express mongoose
+npm install nodemon --save-dev
+mkdir models
+Create files
+Windows CMD
+type nul > app.js
+type nul > models\Movie.js
+PowerShell
+ni app.js
+ni models/Movie.js
+Mac/Linux
+touch app.js
+touch models/Movie.js
+Run MongoDB
+mongosh
+
+Inside shell:
+
+use movieDB
+show dbs
+exit
+Run server
+node app.js
+
+or
+
+npx nodemon app.js
+12) 📮 Postman Endpoints Summary
+Add movie
+POST http://localhost:3000/movies
+
+Body:
+
+{
+  "title": "Inception",
+  "director": "Christopher Nolan",
+  "releaseYear": 2010,
+  "genre": "Sci-Fi"
+}
+Get all movies
+GET http://localhost:3000/movies
+Get movie by ID
+GET http://localhost:3000/movies/<id>
+Update movie by ID
+PUT http://localhost:3000/movies/<id>
+
+Body:
+
+{
+  "title": "Inception Updated",
+  "director": "Christopher Nolan",
+  "releaseYear": 2011,
+  "genre": "Thriller"
+}
+Delete movie by ID
+DELETE http://localhost:3000/movies/<id>

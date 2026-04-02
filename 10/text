@@ -1,0 +1,42 @@
+task-dashboard/
+│
+├── src/
+│   ├── components/
+│   │   ├── TaskForm.js
+│   │   ├── TaskCard.js
+│   │   ├── TaskColumn.js
+│   │   └── FilterBar.js
+│   │
+│   ├── App.js
+│   ├── App.css
+│   ├── index.js
+│
+├── db.json
+├── package.json
+
+
+Step 1: Create React Project
+npx create-react-app task-dashboard
+cd task-dashboard
+
+Install required packages:
+
+npm install axios react-beautiful-dnd
+npm install -g json-server
+🚀 Step 2: db.json
+
+Create this file in project root:
+
+db.jsons
+
+Use these commands in terminal:
+
+npm install
+npm install axios
+npm install @hello-pangea/dnd
+npm install -g json-server
+Then run project:
+Terminal 1 (Backend API)
+json-server --watch db.json --port 5000
+Terminal 2 (React App)
+npm start

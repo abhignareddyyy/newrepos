@@ -1,0 +1,33 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Design Homepage",
+      "description": "Create homepage UI",
+      "status": "To Do",
+      "assignedTo": "Abhi"
+    },
+    {
+      "id": "2",
+      "title": "Build Login Page",
+      "description": "Create login functionality",
+      "status": "In Progress",
+      "assignedTo": "Rahul"
+    },
+    {
+      "id": "3",
+      "title": "API Integration",
+      "description": "Connect frontend to backend",
+      "status": "Done",
+      "assignedTo": "Sneha"
+    },
+    {
+      "title": "dance",
+      "description": "learn dance",
+      "assignedTo": "To DO",
+      "status": "To Do",
+      "id": "KdWgefKLM5g"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,0 +1,28 @@
+git clone https://github.com/your-username/my-web-app.git
+cd my-web-app
+git status
+git add .
+git commit -m "Modified implementation of web application"
+git push origin main
+git branch home-page
+git branch about-page
+git branch contact-page
+git branch
+git checkout home-page
+git add .
+git commit -m "Updated home page design"
+git push origin home-page
+git checkout about-page
+git add .
+git commit -m "Updated about page content"
+git push origin about-page
+git checkout contact-page
+git add .
+git commit -m "Updated contact page details"
+git push origin contact-page
+git checkout main
+git merge home-page
+git merge about-page
+git merge contact-page
+git commit -m "Merged all branches into main"
+git push origin main

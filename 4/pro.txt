@@ -1,0 +1,74 @@
+Method: POST
+URL:
+
+http://localhost:3000/students
+
+Body → raw → JSON
+
+{
+  "name": "Abhi",
+  "age": 20,
+  "class": "CSE",
+  "grade": "A"
+}
+
+👉 Click Send
+
+✅ You will get created student data
+
+📄 2. GET all students
+
+Method: GET
+URL:
+
+http://localhost:3000/students
+
+👉 Click Send
+
+✅ Returns all students
+
+🔍 3. GET student by ID
+
+Copy _id from previous response
+
+Method: GET
+URL:
+
+http://localhost:3000/students/<id>
+
+Example:
+
+http://localhost:3000/students/661234abcd1234
+
+👉 Click Send
+
+✏️ 4. UPDATE student
+
+Method: PUT
+URL:
+
+http://localhost:3000/students/<id>
+
+Body → raw → JSON
+
+{
+  "age": 21,
+  "grade": "A+"
+}
+
+👉 Click Send
+
+❌ 5. DELETE student
+
+Method: DELETE
+URL:
+
+http://localhost:3000/students/<id>
+
+👉 Click Send
+
+✅ Response:
+
+{
+  "message": "Deleted"
+}
