@@ -1,3 +1,6 @@
+
+npm init -y
+npm install express mongoose
 2) 📦 Initialize Node Project
 npm init -y
 
