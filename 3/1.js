@@ -1,10 +1,16 @@
-let id1= Symbol("id");
-let id2 = Symbol("id");
-const user = 
-{
-    name : "Abhi"
-};
-user[id1] = 101;
-user[id2] = 102;
-console.log(user[id1]);
-console.log(user[id2]);
+const studentId = Symbol("id")
+const libraryId = Symbol("id")
+
+let student = {
+    name: "Abhi",
+    id: 101
+}
+
+student[studentId] = "STU123"
+student[libraryId] = "LIB456"
+
+console.log("Normal id:", student.id)
+console.log("Student Unique ID:", student[studentId])
+console.log("Library Unique ID:", student[libraryId])
+
+console.log(studentId === libraryId)

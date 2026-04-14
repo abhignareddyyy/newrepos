@@ -1,0 +1,39 @@
+1. Create Folder in VS Code
+mkdir firebase-api
+cd firebase-api
+code .
+2. Open Terminal in VS Code
+
+Menu:
+
+Terminal → New Terminal
+3. Install Packages
+npm init -y
+npm install express firebase-admin jsonwebtoken
+4. Create Firebase Project
+Open Firebase Console
+Click Create Project
+Enter name
+Create project
+5. Enable Firestore Database
+Open project dashboard
+Left menu → Databases & Storage
+Choose Firestore Database
+Click Create Database
+Select Standard edition
+Next
+Choose region
+Select Start in test mode
+Create
+6. Download serviceAccountKey.json
+Left menu → Settings
+Project Settings
+Service Accounts
+Generate New Private Key
+Download file
+
+Move file into project folder:
+
+firebase-api
+│── server.js
+│── serviceAccountKey.json
