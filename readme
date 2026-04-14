@@ -1,0 +1,18 @@
+mkdir my-web-app
+cd my-web-app
+touch index.html about.html contact.html services.html login.html
+git init
+git status
+git add .
+git commit -m "Initial commit - 5 page web application"
+git remote add origin https://github.com/your-username/my-web-app.git
+git remote -v
+git branch -M main
+git push -u origin main
+git add .
+git commit -m "Updated home page"
+git push
+git fetch origin
+git diff main origin/main
+git merge origin/main
+git pull origin main
