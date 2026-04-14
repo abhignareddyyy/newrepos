@@ -29,26 +29,32 @@ res.send("Invalid Token")
 }
 }
 
-app.post("/students",auth,async(req,res)=>{
-let r=await db.collection("students").add(req.body)
-res.json({id:r.id})
+app.post("/students",auth,(req,res)=>{
+db.collection("students").add(req.body)
+.then(r=>res.json({id:r.id}))
+.catch(()=>res.send("Error"))
 })
 
-app.get("/students",auth,async(req,res)=>{
+app.get("/students",auth,(req,res)=>{
 let data=[]
-let s=await db.collection("students").get()
+db.collection("students").get()
+.then(s=>{
 s.forEach(doc=>data.push({id:doc.id,...doc.data()}))
 res.json(data)
 })
-
-app.put("/students/:id",auth,async(req,res)=>{
-await db.collection("students").doc(req.params.id).update(req.body)
-res.send("Updated")
+.catch(()=>res.send("Error"))
 })
 
-app.delete("/students/:id",auth,async(req,res)=>{
-await db.collection("students").doc(req.params.id).delete()
-res.send("Deleted")
+app.put("/students/:id",auth,(req,res)=>{
+db.collection("students").doc(req.params.id).update(req.body)
+.then(()=>res.send("Updated"))
+.catch(()=>res.send("Error"))
+})
+
+app.delete("/students/:id",auth,(req,res)=>{
+db.collection("students").doc(req.params.id).delete()
+.then(()=>res.send("Deleted"))
+.catch(()=>res.send("Error"))
 })
 
 app.listen(3000)
