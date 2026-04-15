@@ -29,15 +29,15 @@ res.send("Invalid Token")
 }
 }
 
-app.post("/students",auth,(req,res)=>{
-db.collection("students").add(req.body)
+app.post("/products",auth,(req,res)=>{
+db.collection("products").add(req.body)
 .then(r=>res.json({id:r.id}))
 .catch(()=>res.send("Error"))
 })
 
-app.get("/students",auth,(req,res)=>{
+app.get("/products",auth,(req,res)=>{
 let data=[]
-db.collection("students").get()
+db.collection("products").get()
 .then(s=>{
 s.forEach(doc=>data.push({id:doc.id,...doc.data()}))
 res.json(data)
@@ -45,14 +45,23 @@ res.json(data)
 .catch(()=>res.send("Error"))
 })
 
-app.put("/students/:id",auth,(req,res)=>{
-db.collection("students").doc(req.params.id).update(req.body)
+app.get("/products/:id",auth,(req,res)=>{
+db.collection("products").doc(req.params.id).get()
+.then(doc=>{
+if(!doc.exists)return res.send("Not Found")
+res.json({id:doc.id,...doc.data()})
+})
+.catch(()=>res.send("Error"))
+})
+
+app.put("/products/:id",auth,(req,res)=>{
+db.collection("products").doc(req.params.id).update(req.body)
 .then(()=>res.send("Updated"))
 .catch(()=>res.send("Error"))
 })
 
-app.delete("/students/:id",auth,(req,res)=>{
-db.collection("students").doc(req.params.id).delete()
+app.delete("/products/:id",auth,(req,res)=>{
+db.collection("products").doc(req.params.id).delete()
 .then(()=>res.send("Deleted"))
 .catch(()=>res.send("Error"))
 })
