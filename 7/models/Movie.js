@@ -6,5 +6,4 @@ const movieSchema = new mongoose.Schema({
     releaseYear: Number,
     genre: String
 })
-
 module.exports = mongoose.model("Movie", movieSchema)

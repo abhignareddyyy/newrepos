@@ -1,7 +1,8 @@
 const fs = require("fs")
 
 function findAbsolute(n) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) =>
+         {
         if (!isNaN(n) && Number(n) >= 0) {
             resolve("Absolute value!!")
         } else {
